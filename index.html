@@ -5,14 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ROCK-C Media Solution</title>
 
-    <!-- Google Fonts: Poppins (पढ्न सजिलो र आधुनिक फन्ट) -->
+    <!-- Google Fonts: Poppins (आधुनिक र प्रिमियम फन्ट) -->
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
     
-    <!-- FontAwesome Icons (फेसबुक, युट्युब, फोन र सर्भिसका आइकनहरूका लागि) -->
+    <!-- FontAwesome Icons (फेसबुक, युट्युब र सर्भिसका आइकनहरूका लागि) -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <style>
-        /* साझा स्टाइलहरू */
         * {
             margin: 0;
             padding: 0;
@@ -44,12 +43,11 @@
             height: auto;
         }
 
-        /* हिरो सेक्सन (ब्यानर ब्याकग्राउन्ड सहित) */
+        /* हिरो सेक्सन (gallery फोल्डर भित्रको ब्यानर ब्याकग्राउन्ड) */
         .hero {
             padding: 100px 20px;
             text-align: center;
-            /* तपाईंको ब्यानर इमेजलाई ब्याकग्राउन्डमा राखिएको छ */
-            background: linear-gradient(rgba(11, 11, 11, 0.85), rgba(11, 11, 11, 0.85)), url('V%201.1%20FINAL%20BANNER%2015%20AUG%202026.png');
+            background: linear-gradient(rgba(11, 11, 11, 0.85), rgba(11, 11, 11, 0.85)), url('gallery/V%201.1%20FINAL%20BANNER%2015%20AUG%202026.png');
             background-size: cover;
             background-position: center;
             border-bottom: 1px solid #222;
@@ -158,7 +156,7 @@
             box-shadow: 0 10px 20px rgba(255, 215, 0, 0.05);
         }
 
-        /* पोर्टफोलियो इमेज ग्रिड (तपाईंका वास्तविक फाइलहरू) */
+        /* पोर्टफोलियो इमेज ग्रिड (gallery फोल्डरबाट लोड हुने गरी) */
         .portfolio-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -239,7 +237,7 @@
             font-size: 0.9rem;
         }
 
-        /* फ्लोटिङ व्हाट्सएप बटन (Floating WhatsApp Icon) */
+        /* फ्लोटिङ व्हाट्सएप बटन */
         .whatsapp-float {
             position: fixed;
             bottom: 25px;
@@ -281,12 +279,12 @@
 </head>
 <body>
 
-    <!-- हेडर (लोगो सहित) -->
+    <!-- हेडर (लोगो बाहिरै छ) -->
     <header>
         <img src="ROCK C MEDIA SOLUTION NEW LOGO.png" alt="ROCK-C Media Solution" class="logo">
     </header>
 
-    <!-- हिरो सेक्सन -->
+    <!-- हिरो सेक्सन (ब्यानर gallery फोल्डर भित्र छ) -->
     <section class="hero">
         <h1>ROCK-C Media Solution</h1>
         <p>Information • Entertainment • Digital Services</p>
@@ -303,7 +301,7 @@
         </p>
     </section>
 
-    <!-- सेवाहरू (आइकन सहितका कार्डहरू) -->
+    <!-- सेवाहरू -->
     <section class="section">
         <h2>Our Services</h2>
         <div class="cards">
@@ -340,27 +338,27 @@
         </div>
     </section>
 
-    <!-- पोर्टफोलियो (तपाईंको GitHub का वास्तविक इमेज फाइलहरू) -->
+    <!-- पोर्टफोलियो सेक्सन (तस्विरहरू gallery/ फोल्डरबाट आउने गरी मिलाइएको) -->
     <section class="section">
         <h2>Our Work Portfolio</h2>
         <div class="portfolio-grid">
             
             <div class="portfolio-item">
-                <img src="27%20JULY%202025.png" alt="Portfolio Image 1">
+                <img src="gallery/27%20JULY%202025.png" alt="Portfolio Image 1">
                 <div class="portfolio-info">
                     <h4>Media Poster Design</h4>
                 </div>
             </div>
 
             <div class="portfolio-item">
-                <img src="GAHANTI%20MA%20VOTE%20(3).png" alt="Portfolio Image 2">
+                <img src="gallery/GAHANTI%20MA%20VOTE%20(3).png" alt="Portfolio Image 2">
                 <div class="portfolio-info">
                     <h4>Election & Event Graphics</h4>
                 </div>
             </div>
 
             <div class="portfolio-item">
-                <img src="KHUSHI%20DINCHHU%20BHANTHEU%20MALAI-2.png" alt="Portfolio Image 3">
+                <img src="gallery/KHUSHI%20DINCHHU%20BHANTHEU%20MALAI-2.png" alt="Portfolio Image 3">
                 <div class="portfolio-info">
                     <h4>Music Video / Thumbnail Project</h4>
                 </div>
@@ -387,7 +385,7 @@
             <div class="contact-box">
                 <i class="fa-brands fa-facebook"></i>
                 <br>
-                <a href="https://www.facebook.com/Rockcmedia/" target="_blank">Visit Facebook Page</a>
+                <a href="https://www.facebook.com/Rockcmedia/photos_albums" target="_blank">Visit Facebook Page</a>
             </div>
 
             <div class="contact-box">
@@ -404,7 +402,7 @@
         <p>© 2026 ROCK-C Media Solution. All Rights Reserved.</p>
     </footer>
 
-    <!-- गोलो, आधुनिक व्हाट्सएप बटन -->
+    <!-- फ्लोटिङ व्हाट्सएप बटन -->
     <a href="https://wa.me/9779811661522" class="whatsapp-float" target="_blank">
         <i class="fa-brands fa-whatsapp"></i>
     </a>
