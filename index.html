@@ -5,10 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ROCK-C Media Solution</title>
 
-    <!-- Google Fonts: Poppins (आधुनिक र प्रिमियम फन्ट) -->
+    <!-- Google Fonts: Poppins -->
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
     
-    <!-- FontAwesome Icons (फेसबुक, युट्युब र सर्भिसका आइकनहरूका लागि) -->
+    <!-- FontAwesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <style>
@@ -26,7 +26,7 @@
             scroll-behavior: smooth;
         }
 
-        /* हेडर र नेभिगेसन */
+        /* हेडर */
         header {
             background: rgba(0, 0, 0, 0.9);
             padding: 15px;
@@ -43,11 +43,11 @@
             height: auto;
         }
 
-        /* हिरो सेक्सन (gallery फोल्डर भित्रको ब्यानर ब्याकग्राउन्ड) */
+        /* हिरो सेक्सन (नयाँ फोल्डर संरचना अनुसारको ब्यानर) */
         .hero {
             padding: 100px 20px;
             text-align: center;
-            background: linear-gradient(rgba(11, 11, 11, 0.85), rgba(11, 11, 11, 0.85)), url('gallery/V%201.1%20FINAL%20BANNER%2015%20AUG%202026.png');
+            background: linear-gradient(rgba(11, 11, 11, 0.85), rgba(11, 11, 11, 0.85)), url('our-work-portfolio/V%201.1%20FINAL%20BANNER%2015%20AUG%202026.png');
             background-size: cover;
             background-position: center;
             border-bottom: 1px solid #222;
@@ -84,7 +84,7 @@
             transform: scale(1.05);
         }
 
-        /* सेक्सन कमन स्टाइल */
+        /* सेक्सनहरू */
         .section {
             padding: 80px 20px;
             max-width: 1200px;
@@ -145,18 +145,12 @@
             color: #fff;
         }
 
-        .card p {
-            color: #aaa;
-            font-size: 0.95rem;
-        }
-
         .card:hover {
             border-color: #ffd700;
             transform: translateY(-5px);
-            box-shadow: 0 10px 20px rgba(255, 215, 0, 0.05);
         }
 
-        /* पोर्टफोलियो इमेज ग्रिड (gallery फोल्डरबाट लोड हुने गरी) */
+        /* पोर्टफोलियो ग्रिड */
         .portfolio-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -191,15 +185,15 @@
 
         .portfolio-info h4 {
             color: #ffd700;
-            font-size: 1.1rem;
+            font-size: 1rem;
+            text-transform: capitalize;
         }
 
-        /* कन्ट्याक्ट सेक्सन */
+        /* कन्ट्याक्ट */
         .contact-container {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
             gap: 20px;
-            margin-top: 20px;
         }
 
         .contact-box {
@@ -216,17 +210,15 @@
             margin-bottom: 10px;
         }
 
-        .contact-box p, .contact-box a {
+        .contact-box a {
             color: #fff;
             text-decoration: none;
-            font-size: 1rem;
         }
 
         .contact-box a:hover {
             color: #ffd700;
         }
 
-        /* फुटर */
         footer {
             background: #000;
             text-align: center;
@@ -234,10 +226,8 @@
             border-top: 2px solid #ffd700;
             margin-top: 60px;
             color: #888;
-            font-size: 0.9rem;
         }
 
-        /* फ्लोटिङ व्हाट्सएप बटन */
         .whatsapp-float {
             position: fixed;
             bottom: 25px;
@@ -249,49 +239,33 @@
             border-radius: 50%;
             text-align: center;
             font-size: 30px;
-            box-shadow: 2px 4px 15px rgba(0,0,0,0.5);
-            z-index: 100;
             display: flex;
             align-items: center;
             justify-content: center;
             text-decoration: none;
-            transition: 0.3s ease;
+            z-index: 100;
         }
 
-        .whatsapp-float:hover {
-            background: #128C7E;
-            transform: scale(1.1);
-        }
-
-        /* मोबाइल रेस्पोन्सिभ */
-        @media(max-width: 768px) {
-            .hero h1 {
-                font-size: 2.2rem;
-            }
-            .hero p {
-                font-size: 1rem;
-            }
-            .section h2 {
-                font-size: 1.8rem;
-            }
+        .loading-text {
+            text-align: center;
+            color: #aaa;
+            grid-column: 1 / -1;
+            padding: 20px;
         }
     </style>
 </head>
 <body>
 
-    <!-- हेडर (लोगो बाहिरै छ) -->
     <header>
         <img src="ROCK C MEDIA SOLUTION NEW LOGO.png" alt="ROCK-C Media Solution" class="logo">
     </header>
 
-    <!-- हिरो सेक्सन (ब्यानर gallery फोल्डर भित्र छ) -->
     <section class="hero">
         <h1>ROCK-C Media Solution</h1>
         <p>Information • Entertainment • Digital Services</p>
         <a href="#contact" class="cta-btn">Contact Us</a>
     </section>
 
-    <!-- हाम्रो बारेमा -->
     <section class="section">
         <h2>About Us</h2>
         <p class="about-text">
@@ -301,111 +275,110 @@
         </p>
     </section>
 
-    <!-- सेवाहरू -->
     <section class="section">
         <h2>Our Services</h2>
         <div class="cards">
             <div class="card">
                 <i class="fa-solid fa-palette"></i>
                 <h3>Graphic Design</h3>
-                <p>Posters, Banners, Thumbnails and Branding.</p>
             </div>
             <div class="card">
                 <i class="fa-solid fa-video"></i>
                 <h3>Video Editing</h3>
-                <p>Professional Video Editing and Motion Graphics.</p>
             </div>
             <div class="card">
                 <i class="fa-solid fa-newspaper"></i>
                 <h3>News & Media</h3>
-                <p>News Content Creation and Media Solutions.</p>
             </div>
             <div class="card">
                 <i class="fa-solid fa-code"></i>
                 <h3>Website Development</h3>
-                <p>Responsive Business Websites.</p>
             </div>
             <div class="card">
                 <i class="fa-solid fa-bullhorn"></i>
                 <h3>Digital Marketing</h3>
-                <p>Online Promotion and Brand Growth.</p>
             </div>
             <div class="card">
                 <i class="fa-brands fa-youtube"></i>
                 <h3>YouTube Branding</h3>
-                <p>Channel Branding and Thumbnail Design.</p>
             </div>
         </div>
     </section>
 
-    <!-- पोर्टफोलियो सेक्सन (तस्विरहरू gallery/ फोल्डरबाट आउने गरी मिलाइएको) -->
+    <!-- यहाँ फोटोहरू आफैं लोड हुनेछन् -->
     <section class="section">
         <h2>Our Work Portfolio</h2>
-        <div class="portfolio-grid">
-            
-            <div class="portfolio-item">
-                <img src="gallery/27%20JULY%202025.png" alt="Portfolio Image 1">
-                <div class="portfolio-info">
-                    <h4>Media Poster Design</h4>
-                </div>
-            </div>
-
-            <div class="portfolio-item">
-                <img src="gallery/GAHANTI%20MA%20VOTE%20(3).png" alt="Portfolio Image 2">
-                <div class="portfolio-info">
-                    <h4>Election & Event Graphics</h4>
-                </div>
-            </div>
-
-            <div class="portfolio-item">
-                <img src="gallery/KHUSHI%20DINCHHU%20BHANTHEU%20MALAI-2.png" alt="Portfolio Image 3">
-                <div class="portfolio-info">
-                    <h4>Music Video / Thumbnail Project</h4>
-                </div>
-            </div>
-
+        <div class="portfolio-grid" id="auto-gallery">
+            <p class="loading-text"><i class="fas fa-spinner fa-spin"></i> Projects are loading automatically...</p>
         </div>
     </section>
 
-    <!-- सम्पर्क सेक्सन -->
     <section class="section" id="contact">
         <h2>Contact Us</h2>
         <div class="contact-container">
-            
-            <div class="contact-box">
-                <i class="fa-solid fa-phone"></i>
-                <p>+977 9811661522</p>
-            </div>
-
-            <div class="contact-box">
-                <i class="fa-solid fa-envelope"></i>
-                <p>rockcmediasolution@gmail.com</p>
-            </div>
-
-            <div class="contact-box">
-                <i class="fa-brands fa-facebook"></i>
-                <br>
-                <a href="https://www.facebook.com/Rockcmedia/photos_albums" target="_blank">Visit Facebook Page</a>
-            </div>
-
-            <div class="contact-box">
-                <i class="fa-brands fa-youtube"></i>
-                <br>
-                <a href="https://www.youtube.com/@Rock-CMediaSolution" target="_blank">Visit YouTube Channel</a>
-            </div>
-
+            <div class="contact-box"><i class="fa-solid fa-phone"></i><p>+977 9811661522</p></div>
+            <div class="contact-box"><i class="fa-solid fa-envelope"></i><p>rockcmediasolution@gmail.com</p></div>
+            <div class="contact-box"><i class="fa-brands fa-facebook"></i><br><a href="https://www.facebook.com/Rockcmedia/photos_albums" target="_blank">Visit Facebook</a></div>
+            <div class="contact-box"><i class="fa-brands fa-youtube"></i><br><a href="https://www.youtube.com/@Rock-CMediaSolution" target="_blank">Visit YouTube</a></div>
         </div>
     </section>
 
-    <!-- फुटर -->
     <footer>
         <p>© 2026 ROCK-C Media Solution. All Rights Reserved.</p>
     </footer>
 
-    <!-- फ्लोटिङ व्हाट्सएप बटन -->
     <a href="https://wa.me/9779811661522" class="whatsapp-float" target="_blank">
         <i class="fa-brands fa-whatsapp"></i>
     </a>
 
+    <!-- जादुमयी अटो-लोड स्क्रिप्ट -->
+    <script>
+        const repoOwner = 'rockcmediasolution'; 
+        const repoName = 'rock-cmediasolution'; 
+        const folderName = 'our-work-portfolio'; // तपाईंको नयाँ फोल्डरको नाम
+        const apiUrl = `https://api.github.com/repos/${repoOwner}/${repoName}/contents/${folderName}`;
+
+        async function fetchGallery() {
+            const galleryDiv = document.getElementById('auto-gallery');
+            try {
+                const response = await fetch(apiUrl);
+                if (!response.ok) throw new Error("Folder not found");
+                const files = await response.json();
+                
+                let html = '';
+                const imageExtensions = ['.png', '.jpg', '.jpeg', '.webp', '.gif'];
+
+                files.forEach(file => {
+                    const isImage = imageExtensions.some(ext => file.name.toLowerCase().endsWith(ext));
+                    
+                    // फोल्डर भित्रको ब्यानर इमेजलाई ग्यालरी लिस्टमा डबल नदेखाउन फिल्टर गरिएको
+                    if (isImage && !file.name.includes('BANNER')) {
+                        // फाइलको नामबाट .png हटाएर सफा क्याप्सन बनाउने
+                        let cleanName = file.name.replace(/\.[^/.]+$/, "").replace(/%20|_|-/g, " ");
+                        
+                        html += `
+                            <div class="portfolio-item">
+                                <img src="${file.path}" alt="${cleanName}">
+                                <div class="portfolio-info">
+                                    <h4>${cleanName}</h4>
+                                </div>
+                            </div>
+                        `;
+                    }
+                });
+
+                if(html === '') {
+                    galleryDiv.innerHTML = '<p class="loading-text">No images found in the folder yet!</p>';
+                } else {
+                    galleryDiv.innerHTML = html;
+                }
+            } catch (error) {
+                console.error(error);
+                galleryDiv.innerHTML = '<p class="loading-text" style="color:red;">Error loading gallery. Make sure folder name matches exactly.</p>';
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', fetchGallery);
+    </script>
 </body>
 </html>
