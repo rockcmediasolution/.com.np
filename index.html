@@ -5,10 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ROCK-C Media Solution</title>
 
-    <!-- Google Fonts: Poppins -->
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
     
-    <!-- FontAwesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <style>
@@ -43,11 +41,11 @@
             height: auto;
         }
 
-        /* हिरो सेक्सन (नयाँ फोल्डर संरचना अनुसारको ब्यानर) */
+        /* हिरो सेक्सन (ब्यानर बाहिरै भएकोले यहाँ 'url' मा सिधै नाम राखिएको छ) */
         .hero {
             padding: 100px 20px;
             text-align: center;
-            background: linear-gradient(rgba(11, 11, 11, 0.85), rgba(11, 11, 11, 0.85)), url('our-work-portfolio/V%201.1%20FINAL%20BANNER%2015%20AUG%202026.png');
+            background: linear-gradient(rgba(11, 11, 11, 0.85), rgba(11, 11, 11, 0.85)), url('V%201.1%20FINAL%20BANNER%2015%20AUG%202026.png');
             background-size: cover;
             background-position: center;
             border-bottom: 1px solid #222;
@@ -305,11 +303,10 @@
         </div>
     </section>
 
-    <!-- यहाँ फोटोहरू आफैं लोड हुनेछन् -->
     <section class="section">
         <h2>Our Work Portfolio</h2>
         <div class="portfolio-grid" id="auto-gallery">
-            <p class="loading-text"><i class="fas fa-spinner fa-spin"></i> Projects are loading automatically...</p>
+            <p class="loading-text"><i class="fas fa-spinner fa-spin"></i> Loading latest projects...</p>
         </div>
     </section>
 
@@ -331,11 +328,10 @@
         <i class="fa-brands fa-whatsapp"></i>
     </a>
 
-    <!-- जादुमयी अटो-लोड स्क्रिप्ट -->
     <script>
         const repoOwner = 'rockcmediasolution'; 
         const repoName = 'rock-cmediasolution'; 
-        const folderName = 'our-work-portfolio'; // तपाईंको नयाँ फोल्डरको नाम
+        const folderName = 'our-work-portfolio/our-work-portfolio'; // यहाँ डबल फोल्डर मिलाइयो!
         const apiUrl = `https://api.github.com/repos/${repoOwner}/${repoName}/contents/${folderName}`;
 
         async function fetchGallery() {
@@ -351,9 +347,8 @@
                 files.forEach(file => {
                     const isImage = imageExtensions.some(ext => file.name.toLowerCase().endsWith(ext));
                     
-                    // फोल्डर भित्रको ब्यानर इमेजलाई ग्यालरी लिस्टमा डबल नदेखाउन फिल्टर गरिएको
-                    if (isImage && !file.name.includes('BANNER')) {
-                        // फाइलको नामबाट .png हटाएर सफा क्याप्सन बनाउने
+                    if (isImage) {
+                        // फाइलको नामबाट .png हटाएर राम्रो क्याप्सन बनाउने
                         let cleanName = file.name.replace(/\.[^/.]+$/, "").replace(/%20|_|-/g, " ");
                         
                         html += `
@@ -374,7 +369,7 @@
                 }
             } catch (error) {
                 console.error(error);
-                galleryDiv.innerHTML = '<p class="loading-text" style="color:red;">Error loading gallery. Make sure folder name matches exactly.</p>';
+                galleryDiv.innerHTML = '<p class="loading-text" style="color:red;">Error loading gallery. Please check back in a moment.</p>';
             }
         }
 
