@@ -33,18 +33,29 @@
         .media-container { position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; border-radius: 8px; margin-bottom: 30px; background: #f0f0f0; border: 1px solid #e2e8f0; }
         .media-container iframe, .media-container img { position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: contain; }
 
-        /* प्रोफेशनल अटोमेटिक फलो बक्स स्टाइल */
+        /* 🌟 नयाँ र आधुनिक सोसल मिडिया आइकन बक्स स्टाइल */
         .follow-notice-box { 
-            background: #fffdf0; border: 1px solid #ffeaa7; border-radius: 8px; 
-            padding: 20px; margin: 35px 0; box-shadow: inset 3px 0 0 #ffd700;
+            background: #ffffff; border: 1px solid #e2e8f0; border-radius: 12px; 
+            padding: 25px 20px; margin: 40px 0; text-align: center;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.02);
         }
-        .follow-notice-box p { font-weight: 600; color: #2c3e50; margin-bottom: 15px; font-size: 1.05rem; }
-        .follow-links { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 12px; list-style: none; }
-        .follow-links li { display: flex; align-items: center; gap: 8px; font-size: 0.95rem; }
-        .follow-links a { color: #2980b9; text-decoration: none; font-weight: 500; transition: 0.2s; }
-        .follow-links a:hover { color: #b8860b; text-decoration: underline; }
-        .follow-links i { width: 18px; text-align: center; font-size: 1.1rem; }
-        .fa-facebook { color: #3b5998; } .fa-whatsapp { color: #25D366; } .fa-envelope { color: #e74c3c; } .fa-youtube { color: #c4302b; }
+        .follow-notice-box p { font-weight: 600; color: #334155; margin-bottom: 20px; font-size: 1.05rem; }
+        
+        .social-icons-row { display: flex; justify-content: center; gap: 15px; flex-wrap: wrap; }
+        .social-icon-btn { 
+            display: flex; align-items: center; justify-content: center;
+            width: 48px; height: 48px; border-radius: 50%; 
+            color: #ffffff; text-decoration: none; font-size: 1.4rem; 
+            transition: transform 0.2s, box-shadow 0.2s; 
+        }
+        /* होभर गर्दा माथि सर्ने र हल्का चमक आउने इफेक्ट */
+        .social-icon-btn:hover { transform: translateY(-4px); box-shadow: 0 6px 15px rgba(0,0,0,0.15); }
+        
+        /* ब्राण्ड अनुसारको रङ्गहरू */
+        .btn-facebook { background: #1877f2; }
+        .btn-whatsapp { background: #25d366; }
+        .btn-email { background: #ea4335; }
+        .btn-youtube { background: #ff0000; }
 
         /* सुझाव खण्ड स्टाइल */
         .suggestions-section { margin-top: 40px; border-top: 2px solid #e2e8f0; padding-top: 25px; }
@@ -99,11 +110,11 @@
                         return;
                     }
 
-                    const currentNews = rows[newsId];
-                    const date = currentNews[0] ? currentNews[0].trim() : '';
-                    const title = currentNews[1] ? currentNews[1].trim() : '';
-                    const desc = currentNews[2] ? currentNews[2].trim() : '';
-                    const mediaLink = currentNews[3] ? currentNews[3].trim() : '';
+                    const currentNews = rows[rows.length - 1 - (rows.length - 1 - newsId)]; // Safe row retrieval
+                    const date = rows[newsId][0] ? rows[newsId][0].trim() : '';
+                    const title = rows[newsId][1] ? rows[newsId][1].trim() : '';
+                    const desc = rows[newsId][2] ? rows[newsId][2].trim() : '';
+                    const mediaLink = rows[newsId][3] ? rows[newsId][3].trim() : '';
 
                     let mediaHtml = '';
                     if (mediaLink) {
@@ -115,7 +126,7 @@
                         }
                     }
 
-                    // सुझाव खण्ड (सधैँ नयाँ माथि आउने रिभर्स लुप)
+                    // सुझाव खण्ड (रिभर्स लुप)
                     let suggestionsHtml = '';
                     let count = 0;
                     for (let i = rows.length - 1; i >= 1; i--) {
@@ -128,7 +139,7 @@
                         }
                     }
 
-                    // पूरा ढाँचा इन्जेक्सन (अटोमेटिक फलो बक्स सहित)
+                    // बक्स भित्र केवल प्रिमियम आइकन बटनहरू मात्र इन्जेक्सन गरिएको छ
                     container.innerHTML = `
                         <span class="news-date"><i class="fa-regular fa-clock"></i> ${date}</span>
                         <h1>${title}</h1>
@@ -137,12 +148,12 @@
                         
                         <div class="follow-notice-box">
                             <p>सूचना, मनोरञ्जन र डिजिटल सेवाका लागि ROCK C Media Solution लाई Follow गर्न नभुल्नुहोस्।</p>
-                            <ul class="follow-links">
-                                <li><i class="fab fa-facebook"></i> Facebook: <a href="https://facebook.com/Rockcmedia" target="_blank">facebook.com/Rockcmedia</a></li>
-                                <li><i class="fab fa-whatsapp"></i> WhatsApp: <a href="https://wa.me/9779811661522" target="_blank">+9779811661522</a></li>
-                                <li><i class="fas fa-envelope"></i> Email: <a href="mailto:rockcmediasolution@gmail.com">rockcmediasolution@gmail.com</a></li>
-                                <li><i class="fab fa-youtube"></i> YouTube: <a href="https://youtube.com/@Rock-CMediaSolution" target="_blank">youtube.com/@Rock-CMediaSolution</a></li>
-                            </ul>
+                            <div class="social-icons-row">
+                                <a href="https://facebook.com/Rockcmedia" target="_blank" class="social-icon-btn btn-facebook" title="Facebook Page"><i class="fab fa-facebook-f"></i></a>
+                                <a href="https://wa.me/9779811661522" target="_blank" class="social-icon-btn btn-whatsapp" title="WhatsApp Chat"><i class="fab fa-whatsapp"></i></a>
+                                <a href="mailto:rockcmediasolution@gmail.com" class="social-icon-btn btn-email" title="Send Email"><i class="fas fa-envelope"></i></a>
+                                <a href="https://youtube.com/@Rock-CMediaSolution" target="_blank" class="social-icon-btn btn-youtube" title="YouTube Channel"><i class="fab fa-youtube"></i></a>
+                            </div>
                         </div>
 
                         <section class="suggestions-section">
