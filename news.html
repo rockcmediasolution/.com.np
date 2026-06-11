@@ -3,49 +3,36 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>News & Media - ROCK-C Media</title>
-
+    <title>News Portal - ROCK-C Media</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', Arial, sans-serif; }
         body { background: #0b0b0b; color: #f1f1f1; line-height: 1.6; }
-        
-        header {
-            background: rgba(0, 0, 0, 0.9); padding: 15px; text-align: center;
-            border-bottom: 2px solid #ffd700; position: sticky; top: 0; z-index: 100;
-        }
+        header { background: rgba(0, 0, 0, 0.9); padding: 15px; text-align: center; border-bottom: 2px solid #ffd700; position: sticky; top: 0; z-index: 100; }
         .logo { max-width: 150px; width: 100%; height: auto; }
-        
-        .back-btn {
-            display: inline-block; margin: 20px; padding: 10px 20px;
-            background: #222; color: #ffd700; text-decoration: none;
-            border-radius: 5px; border: 1px solid #ffd700; transition: 0.3s;
-        }
+        .back-btn { display: inline-block; margin: 20px; padding: 10px 20px; background: #222; color: #ffd700; text-decoration: none; border-radius: 5px; border: 1px solid #ffd700; transition: 0.3s; }
         .back-btn:hover { background: #ffd700; color: #000; }
+        
+        /* दुई कोलम लेआउट: समाचार र फेसबुक */
+        .portal-container { max-width: 1200px; margin: 0 auto; padding: 20px; display: grid; grid-template-columns: 2fr 1fr; gap: 30px; }
+        .news-list-section h1 { color: #ffd700; margin-bottom: 25px; font-size: 2rem; border-left: 4px solid #ffd700; padding-left: 10px; }
+        
+        /* हेडलाइन कार्ड स्टाइल */
+        .headline-item { background: #141414; border: 1px solid #252525; border-radius: 8px; padding: 15px 20px; margin-bottom: 15px; transition: 0.3s; cursor: pointer; }
+        .headline-item:hover { border-color: #ffd700; transform: translateX(5px); }
+        .headline-date { color: #888; font-size: 0.85rem; display: block; margin-bottom: 5px; }
+        .headline-item h2 { color: #fff; font-size: 1.3rem; font-weight: 600; }
+        .headline-item h2:hover { color: #ffd700; }
+        
+        .sidebar-section h3 { color: #ffd700; margin-bottom: 20px; font-size: 1.5rem; }
+        .fb-container { background: #141414; padding: 10px; border-radius: 8px; border: 1px solid #252525; }
+        .loading-text { text-align: center; color: #ffd700; padding: 30px; }
 
-        .news-section { max-width: 800px; margin: 0 auto; padding: 20px; }
-        .news-section h1 { text-align: center; color: #ffd700; margin-bottom: 30px; font-size: 2.5rem; }
-
-        .news-item {
-            background: #141414; border: 1px solid #252525; border-radius: 10px;
-            padding: 20px; margin-bottom: 30px; box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+        @media (max-width: 900px) {
+            .portal-container { grid-template-columns: 1fr; }
+            .fb-container { display: flex; justify-content: center; }
         }
-        .news-date { color: #888; font-size: 0.9rem; margin-bottom: 10px; display: block; }
-        .news-item h2 { color: #fff; margin-bottom: 15px; font-size: 1.5rem; }
-        .news-item p { color: #ccc; margin-bottom: 15px; white-space: pre-wrap; }
-
-        .media-container {
-            position: relative; padding-bottom: 56.25%; height: 0; 
-            overflow: hidden; border-radius: 8px; margin-top: 15px; background: #000;
-        }
-        .media-container iframe, .media-container img {
-            position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: contain;
-        }
-
-        .loading-text { text-align: center; color: #ffd700; font-size: 1.2rem; padding: 50px; }
-        footer { background: #000; text-align: center; padding: 20px; border-top: 2px solid #ffd700; margin-top: 40px; color: #888; }
     </style>
 </head>
 <body>
@@ -56,91 +43,63 @@
 
     <a href="index.html" class="back-btn"><i class="fa-solid fa-arrow-left"></i> Back to Home</a>
 
-    <section class="news-section">
-        <h1>Latest News & Media</h1>
-        
-        <div id="news-container">
-            <p class="loading-text"><i class="fas fa-spinner fa-spin"></i> Loading Latest News from Google Sheets...</p>
-        </div>
-    </section>
+    <div class="portal-container">
+        <section class="news-list-section">
+            <h1>मुख्य समाचारहरू</h1>
+            <div id="headlines-container">
+                <p class="loading-text"><i class="fas fa-spinner fa-spin"></i> समाचार लोड हुँदैछ...</p>
+            </div>
+        </section>
 
-    <footer>
-        <p>© 2026 ROCK-C Media Solution. All Rights Reserved.</p>
-    </footer>
+        <aside class="sidebar-section">
+            <h3>फेसबुक अपडेट</h3>
+            <div class="fb-container">
+                <div class="fb-page" data-href="https://www.facebook.com/Rockcmedia" data-tabs="timeline" data-width="500" data-height="600" data-small-header="false" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="false">
+                    <blockquote lang="en" class="fb-xfbml-parse-ignore"><a href="https://www.facebook.com/Rockcmedia">Loading Facebook Feed...</a></blockquote>
+                </div>
+            </div>
+        </aside>
+    </div>
+
+    <div id="fb-root"></div>
+    <script async defer crossorigin="anonymous" src="https://connect.facebook.net/ne_NP/sdk.js#xfbml=1&version=v17.0"></script>
 
     <script>
-        // तपाईंको Spreadsheet ID यहाँ सेट गरिएको छ
         const SPREADSHEET_ID = '1fzL5DzEemQ_BTQgkHFLaCG-7ZjQlEFknZw5SN44gm-Q';
-        
         const url = `https://docs.google.com/spreadsheets/d/${SPREADSHEET_ID}/gviz/tq?tqx=out:json`;
 
-        function getYouTubeId(url) {
-            const regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=)([^#\&\?]*).*/;
-            const match = url.match(regExp);
-            return (match && match[2].length === 11) ? match[2] : null;
-        }
-
-        async function loadNews() {
-            const container = document.getElementById('news-container');
+        async function loadHeadlines() {
+            const container = document.getElementById('headlines-container');
             try {
                 const response = await fetch(url);
                 const text = await response.text();
-                
-                const start = text.indexOf('{');
-                const end = text.lastIndexOf('}') + 1;
-                const json = JSON.parse(text.slice(start, end));
-                
+                const json = JSON.parse(text.slice(text.indexOf('{'), text.lastIndexOf('}') + 1));
                 const rows = json.table.rows;
                 let htmlContent = '';
 
-                // Row 1 (हेडिङ) लाई छाडेर Row 2 बाट डेटा तान्ने
+                // उल्टोबाट लुप चलाउने ताकि नयाँ माथि आओस्
                 for (let i = rows.length - 1; i >= 1; i--) {
                     const row = rows[i].c;
-                    
                     const date = row[0] ? row[0].v : '';
                     const title = row[1] ? row[1].v : '';
-                    const desc = row[2] ? row[2].v : '';
-                    const mediaLink = row[3] ? row[3].v : '';
 
-                    // यदि पहिलो कोलम (Date) खाली छ भने त्यो रोलाई नदेखाउने
                     if (!date && !title) continue;
 
-                    let mediaHtml = '';
-                    
-                    if (mediaLink) {
-                        const ytId = getYouTubeId(mediaLink);
-                        if (ytId) {
-                            mediaHtml = `
-                                <div class="media-container">
-                                    <iframe src="https://www.youtube.com/embed/${ytId}" title="YouTube video" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                                </div>`;
-                        } else {
-                            mediaHtml = `
-                                <div class="media-container">
-                                    <img src="${mediaLink}" alt="News Media">
-                                </div>`;
-                        }
-                    }
-
+                    // क्लिक गर्दा news-detail.html मा Row ID (i) लिएर जाने लिंक
                     htmlContent += `
-                        <div class="news-item">
-                            <span class="news-date"><i class="fa-regular fa-clock"></i> ${date}</span>
+                        <div class="headline-item" onclick="window.location.href='news-detail.html?id=${i}'">
+                            <span class="headline-date"><i class="fa-regular fa-clock"></i> ${date}</span>
                             <h2>${title}</h2>
-                            <p>${desc}</p>
-                            ${mediaHtml}
                         </div>
                     `;
                 }
-
-                container.innerHTML = htmlContent || '<p class="loading-text">No news available at the moment.</p>';
-
+                container.innerHTML = htmlContent || '<p class="loading-text">अहिले कुनै समाचार उपलब्ध छैन।</p>';
             } catch (error) {
                 console.error(error);
-                container.innerHTML = '<p class="loading-text" style="color:red;">Error loading news. Please check if your Google Sheet is shared as "Anyone with the link".</p>';
+                container.innerHTML = '<p class="loading-text" style="color:red;">समाचार लोड गर्न सकिएन।</p>';
             }
         }
-
-        document.addEventListener('DOMContentLoaded', loadNews);
+        document.addEventListener('DOMContentLoaded', loadHeadlines);
     </script>
 </body>
 </html>
