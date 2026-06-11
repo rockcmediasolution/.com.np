@@ -3,72 +3,49 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>News Portal - ROCK-C Media</title>
+    <title>समाचार शाखा - ROCK-C Media</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.4.1/papaparse.min.js"></script>
 
     <style>
-        /* 🎨 CSS Variables: डिफल्टमा Light Mode सेट गरिएको छ */
-        :root {
-            --bg-color: #f5f6f8;
-            --text-color: #1a1a1a;
-            --card-bg: #ffffff;
-            --card-border: #e0e0e0;
-            --text-muted: #666666;
-            --header-bg: #000000;
-            --headline-hover: #ffd700;
-        }
-
-        /* 🌙 Dark Mode लागू हुँदा बदलिने रङहरू */
-        body.dark-mode {
-            --bg-color: #0b0b0b;
-            --text-color: #f1f1f1;
-            --card-bg: #141414;
-            --card-border: #252525;
-            --text-muted: #888888;
-            --header-bg: #111111;
-        }
-
-        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', Arial, sans-serif; transition: background 0.3s, color 0.3s; }
-        body { background: var(--bg-color); color: var(--text-color); line-height: 1.6; }
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', Arial, sans-serif; }
+        /* प्रिमियम लाइट ब्याकग्राउन्ड */
+        body { background: #f4f6f9; color: #2c3e50; line-height: 1.6; }
         
+        /* हेडर डिजाइन - लोगो र समाचार शाखा */
         header { 
-            background: var(--header-bg); padding: 15px; 
-            display: flex; justify-content: space-between; align-items: center;
-            border-bottom: 2px solid #ffd700; position: sticky; top: 0; z-index: 100;
-            padding: 15px 40px;
+            background: #ffffff; 
+            padding: 15px 20px; 
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05); 
+            border-bottom: 3px solid #ffd700; 
+            position: sticky; 
+            top: 0; 
+            z-index: 100;
         }
+        .header-container { max-width: 1200px; margin: 0 auto; display: flex; align-items: center; justify-content: center; gap: 15px; flex-wrap: wrap; }
         .logo { max-width: 140px; width: 100%; height: auto; }
+        .header-title { font-size: 1.5rem; font-weight: 700; color: #111; border-left: 3px solid #ffd700; padding-left: 15px; text-transform: uppercase; }
 
-        /* थिम चेन्ज गर्ने बटन स्टाइल */
-        .theme-toggle-btn {
-            background: #222; color: #ffd700; border: 1px solid #ffd700;
-            padding: 8px 15px; border-radius: 20px; cursor: pointer;
-            font-size: 0.9rem; font-weight: 600; display: flex; align-items: center; gap: 8px;
-        }
-        .theme-toggle-btn:hover { background: #ffd700; color: #000; }
+        .back-btn { display: inline-block; margin: 20px; padding: 10px 20px; background: #ffffff; color: #333; text-decoration: none; border-radius: 5px; border: 1px solid #ccc; font-weight: 600; transition: 0.3s; }
+        .back-btn:hover { background: #ffd700; color: #000; border-color: #ffd700; }
         
-        .back-btn { display: inline-block; margin: 20px 40px; padding: 10px 20px; background: #222; color: #ffd700; text-decoration: none; border-radius: 5px; border: 1px solid #ffd700; transition: 0.3s; }
-        .back-btn:hover { background: #ffd700; color: #000; }
+        /* लेआउट संरचना */
+        .portal-container { max-width: 1200px; margin: 0 auto; padding: 0 20px 40px 20px; display: grid; grid-template-columns: 2fr 1fr; gap: 30px; }
+        .news-list-section h1 { color: #111; margin-bottom: 25px; font-size: 1.8rem; border-left: 5px solid #ffd700; padding-left: 12px; }
         
-        .portal-container { max-width: 1200px; margin: 0 auto; padding: 20px; display: grid; grid-template-columns: 2fr 1fr; gap: 30px; }
-        .news-list-section h1 { color: #ffd700; margin-bottom: 25px; font-size: 2rem; border-left: 4px solid #ffd700; padding-left: 10px; }
+        /* लाइट थिम हेडलाइन कार्डहरू */
+        .headline-item { background: #ffffff; border: 1px solid #e2e8f0; border-radius: 8px; padding: 20px; margin-bottom: 15px; transition: 0.3s; cursor: pointer; box-shadow: 0 2px 5px rgba(0,0,0,0.02); }
+        .headline-item:hover { border-color: #ffd700; transform: translateY(-2px); box-shadow: 0 5px 15px rgba(0,0,0,0.08); background: #fffdf0; }
+        .headline-date { color: #7f8c8d; font-size: 0.85rem; display: block; margin-bottom: 8px; }
+        .headline-item h2 { color: #2c3e50; font-size: 1.35rem; font-weight: 600; transition: 0.2s; }
+        .headline-item:hover h2 { color: #b8860b; }
         
-        /* हेडलाइन कार्ड स्टाइल */
-        .headline-item { background: var(--card-bg); border: 1px solid var(--card-border); border-radius: 8px; padding: 20px; margin-bottom: 15px; transition: 0.3s; cursor: pointer; box-shadow: 0 2px 8px rgba(0,0,0,0.05); }
-        .headline-item:hover { border-color: #ffd700; transform: translateX(5px); }
-        .headline-date { color: var(--text-muted); font-size: 0.85rem; display: block; margin-bottom: 5px; }
-        .headline-item h2 { color: var(--text-color); font-size: 1.35rem; font-weight: 600; }
-        .headline-item:hover h2 { color: #ffd700; }
-        
-        .sidebar-section h3 { color: #ffd700; margin-bottom: 20px; font-size: 1.5rem; }
-        .fb-container { background: var(--card-bg); padding: 10px; border-radius: 8px; border: 1px solid var(--card-border); }
-        .loading-text { text-align: center; color: #ffd700; padding: 30px; }
+        .sidebar-section h3 { color: #111; margin-bottom: 20px; font-size: 1.4rem; border-left: 4px solid #3b5998; padding-left: 10px; }
+        .fb-container { background: #ffffff; padding: 10px; border-radius: 8px; border: 1px solid #e2e8f0; box-shadow: 0 2px 5px rgba(0,0,0,0.02); }
+        .loading-text { text-align: center; color: #7f8c8d; padding: 30px; font-size: 1.1rem; }
 
         @media (max-width: 900px) {
-            header { padding: 15px 20px; }
-            .back-btn { margin: 20px; }
             .portal-container { grid-template-columns: 1fr; }
             .fb-container { display: flex; justify-content: center; }
         }
@@ -77,13 +54,15 @@
 <body>
 
     <header>
-        <img src="ROCK C MEDIA SOLUTION NEW LOGO.png" alt="ROCK-C Media Solution" class="logo">
-        <button class="theme-toggle-btn" id="theme-toggle">
-            <i class="fa-solid fa-moon"></i> <span>Dark Mode</span>
-        </button>
+        <div class="header-container">
+            <img src="ROCK C MEDIA SOLUTION NEW LOGO.png" alt="ROCK-C Media" class="logo">
+            <div class="header-title">समाचार शाखा</div>
+        </div>
     </header>
 
-    <a href="index.html" class="back-btn"><i class="fa-solid fa-arrow-left"></i> Back to Home</a>
+    <div style="max-width: 1200px; margin: 0 auto; padding: 0 20px;">
+        <a href="index.html" class="back-btn"><i class="fa-solid fa-arrow-left"></i> मुख्य गृहपृष्ठ</a>
+    </div>
 
     <div class="portal-container">
         <section class="news-list-section">
@@ -110,30 +89,6 @@
         const SPREADSHEET_ID = '1fzL5DzEemQ_BTQgkHFLaCG-7ZjQlEFknZw5SN44gm-Q';
         const url = `https://docs.google.com/spreadsheets/d/${SPREADSHEET_ID}/export?format=csv`;
 
-        // 🌗 थिम व्यवस्थापन (Light/Dark Setup)
-        const themeToggleBtn = document.getElementById('theme-toggle');
-        const themeIcon = themeToggleBtn.querySelector('i');
-        const themeText = themeToggleBtn.querySelector('span');
-
-        if (localStorage.getItem('theme') === 'dark') {
-            document.body.classList.add('dark-mode');
-            themeIcon.className = 'fa-solid fa-sun';
-            themeText.innerText = 'Light Mode';
-        }
-
-        themeToggleBtn.addEventListener('click', () => {
-            document.body.classList.toggle('dark-mode');
-            if (document.body.classList.contains('dark-mode')) {
-                localStorage.setItem('theme', 'dark');
-                themeIcon.className = 'fa-solid fa-sun';
-                themeText.innerText = 'Light Mode';
-            } else {
-                localStorage.setItem('theme', 'light');
-                themeIcon.className = 'fa-solid fa-moon';
-                themeText.innerText = 'Dark Mode';
-            }
-        });
-
         function loadHeadlines() {
             const container = document.getElementById('headlines-container');
             
@@ -144,7 +99,7 @@
                     const rows = results.data;
                     let htmlContent = '';
 
-                    // रिभर्स अर्डरमा हेडलाइनहरू (नयाँ सधैँ माथि)
+                    // रिभर्स अर्डरमा नयाँ समाचार सधैँ माथि राख्ने फिक्स
                     for (let i = rows.length - 1; i >= 1; i--) {
                         const row = rows[i];
                         if (!row || row.length < 2) continue;
