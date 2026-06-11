@@ -3,85 +3,73 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>News Details - ROCK-C Media</title>
+    <title>समाचार विवरण - ROCK-C Media</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.4.1/papaparse.min.js"></script>
 
     <style>
-        /* 🎨 CSS Variables: डिफल्टमा Light Mode */
-        :root {
-            --bg-color: #f5f6f8;
-            --text-color: #1a1a1a;
-            --card-bg: #ffffff;
-            --card-border: #e0e0e0;
-            --text-muted: #666666;
-            --header-bg: #000000;
-        }
-
-        /* 🌙 Dark Mode */
-        body.dark-mode {
-            --bg-color: #0b0b0b;
-            --text-color: #f1f1f1;
-            --card-bg: #141414;
-            --card-border: #252525;
-            --text-muted: #888888;
-            --header-bg: #111111;
-        }
-
-        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', Arial, sans-serif; transition: background 0.3s, color 0.3s; }
-        body { background: var(--bg-color); color: var(--text-color); line-height: 1.6; }
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', Arial, sans-serif; }
+        body { background: #f4f6f9; color: #2c3e50; line-height: 1.6; }
         
         header { 
-            background: var(--header-bg); padding: 15px 40px; 
-            display: flex; justify-content: space-between; align-items: center;
-            border-bottom: 2px solid #ffd700; position: sticky; top: 0; z-index: 100;
+            background: #ffffff; padding: 15px 20px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); 
+            border-bottom: 3px solid #ffd700; position: sticky; top: 0; z-index: 100;
         }
+        .header-container { max-width: 1200px; margin: 0 auto; display: flex; align-items: center; justify-content: center; gap: 15px; flex-wrap: wrap; }
         .logo { max-width: 140px; width: 100%; height: auto; }
+        .header-title { font-size: 1.5rem; font-weight: 700; color: #111; border-left: 3px solid #ffd700; padding-left: 15px; text-transform: uppercase; }
 
-        .theme-toggle-btn {
-            background: #222; color: #ffd700; border: 1px solid #ffd700;
-            padding: 8px 15px; border-radius: 20px; cursor: pointer;
-            font-size: 0.9rem; font-weight: 600; display: flex; align-items: center; gap: 8px;
-        }
-        .theme-toggle-btn:hover { background: #ffd700; color: #000; }
+        .back-btn { display: inline-block; margin: 20px 0; padding: 10px 20px; background: #ffffff; color: #333; text-decoration: none; border-radius: 5px; border: 1px solid #ccc; font-weight: 600; transition: 0.3s; }
+        .back-btn:hover { background: #ffd700; color: #000; border-color: #ffd700; }
 
-        .back-btn { display: inline-block; margin: 20px auto; padding: 10px 20px; background: #222; color: #ffd700; text-decoration: none; border-radius: 5px; border: 1px solid #ffd700; transition: 0.3s; }
-        .back-btn:hover { background: #ffd700; color: #000; }
-
-        .detail-container { max-width: 800px; margin: 0 auto; padding: 20px; }
-        .news-date { color: var(--text-muted); font-size: 0.9rem; margin-bottom: 10px; display: block; }
-        .detail-container h1 { color: var(--text-color); font-size: 2.2rem; margin-bottom: 20px; line-height: 1.3; font-weight: 700; }
-        .news-content { color: var(--text-color); opacity: 0.9; font-size: 1.15rem; margin-bottom: 30px; white-space: pre-wrap; text-align: justify; }
+        .detail-container { max-width: 850px; margin: 0 auto; padding: 0 20px 50px 20px; }
+        .main-card { background: #ffffff; padding: 30px; border-radius: 10px; border: 1px solid #e2e8f0; box-shadow: 0 4px 12px rgba(0,0,0,0.03); }
         
-        .media-container { position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; border-radius: 10px; margin-bottom: 30px; background: #000; border: 1px solid var(--card-border); }
+        .news-date { color: #7f8c8d; font-size: 0.9rem; margin-bottom: 12px; display: block; font-weight: 500; }
+        .main-card h1 { color: #111; font-size: 2.2rem; margin-bottom: 25px; line-height: 1.4; font-weight: 700; }
+        .news-content { color: #333; font-size: 1.15rem; margin-bottom: 35px; white-space: pre-wrap; text-align: justify; line-height: 1.8; }
+        
+        .media-container { position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; border-radius: 8px; margin-bottom: 30px; background: #f0f0f0; border: 1px solid #e2e8f0; }
         .media-container iframe, .media-container img { position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: contain; }
 
-        /* सुझाव सेक्सन स्टाइल */
-        .suggestions-section { margin-top: 50px; border-top: 2px solid #ffd700; padding-top: 30px; }
-        .suggestions-section h3 { color: #ffd700; font-size: 1.5rem; margin-bottom: 20px; }
-        .suggested-item { display: block; color: var(--text-color); opacity: 0.8; text-decoration: none; padding: 12px 0; border-bottom: 1px dashed var(--card-border); font-size: 1.1rem; transition: 0.2s; }
-        .suggested-item:hover { color: #ffd700; opacity: 1; padding-left: 5px; }
+        /* प्रोफेशनल अटोमेटिक फलो बक्स स्टाइल */
+        .follow-notice-box { 
+            background: #fffdf0; border: 1px solid #ffeaa7; border-radius: 8px; 
+            padding: 20px; margin: 35px 0; box-shadow: inset 3px 0 0 #ffd700;
+        }
+        .follow-notice-box p { font-weight: 600; color: #2c3e50; margin-bottom: 15px; font-size: 1.05rem; }
+        .follow-links { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 12px; list-style: none; }
+        .follow-links li { display: flex; align-items: center; gap: 8px; font-size: 0.95rem; }
+        .follow-links a { color: #2980b9; text-decoration: none; font-weight: 500; transition: 0.2s; }
+        .follow-links a:hover { color: #b8860b; text-decoration: underline; }
+        .follow-links i { width: 18px; text-align: center; font-size: 1.1rem; }
+        .fa-facebook { color: #3b5998; } .fa-whatsapp { color: #25D366; } .fa-envelope { color: #e74c3c; } .fa-youtube { color: #c4302b; }
 
-        .loading-text { text-align: center; color: #ffd700; padding: 50px; }
-        @media (max-width: 600px) { header { padding: 15px 20px; } .detail-container h1 { font-size: 1.7rem; } }
+        /* सुझाव खण्ड स्टाइल */
+        .suggestions-section { margin-top: 40px; border-top: 2px solid #e2e8f0; padding-top: 25px; }
+        .suggestions-section h3 { color: #111; font-size: 1.4rem; margin-bottom: 15px; border-left: 4px solid #b8860b; padding-left: 10px; }
+        .suggested-item { display: block; color: #4a5568; text-decoration: none; padding: 12px 0; border-bottom: 1px dashed #e2e8f0; font-size: 1.1rem; font-weight: 500; transition: 0.2s; }
+        .suggested-item:hover { color: #b8860b; padding-left: 8px; background: rgba(0,0,0,0.01); }
+
+        .loading-text { text-align: center; color: #7f8c8d; padding: 50px; }
     </style>
 </head>
 <body>
 
     <header>
-        <img src="ROCK C MEDIA SOLUTION NEW LOGO.png" alt="ROCK-C Media Solution" class="logo">
-        <button class="theme-toggle-btn" id="theme-toggle">
-            <i class="fa-solid fa-moon"></i> <span>Dark Mode</span>
-        </button>
+        <div class="header-container">
+            <img src="ROCK C MEDIA SOLUTION NEW LOGO.png" alt="ROCK-C Media" class="logo">
+            <div class="header-title">समाचार शाखा</div>
+        </div>
     </header>
 
-    <div style="max-width: 800px; margin: 0 auto; padding: 0 20px;">
-        <a href="news.html" class="back-btn"><i class="fa-solid fa-arrow-left"></i> सबै समाचारहरू</a>
-    </div>
-
-    <main class="detail-container" id="main-content">
-        <p class="loading-text"><i class="fas fa-spinner fa-spin"></i> समाचार लोड हुँदैछ...</p>
+    <main class="detail-container">
+        <a href="news.html" class="back-btn"><i class="fa-solid fa-arrow-left"></i> सबै हेडलाइनहरू</a>
+        
+        <div class="main-card" id="main-content">
+            <p class="loading-text"><i class="fas fa-spinner fa-spin"></i> समाचार लोड हुँदैछ...</p>
+        </div>
     </main>
 
     <script>
@@ -90,30 +78,6 @@
 
         const urlParams = new URLSearchParams(window.location.search);
         const newsId = parseInt(urlParams.get('id'));
-
-        // 🌗 थिम सिङ्क र व्यवस्थापन
-        const themeToggleBtn = document.getElementById('theme-toggle');
-        const themeIcon = themeToggleBtn.querySelector('i');
-        const themeText = themeToggleBtn.querySelector('span');
-
-        if (localStorage.getItem('theme') === 'dark') {
-            document.body.classList.add('dark-mode');
-            themeIcon.className = 'fa-solid fa-sun';
-            themeText.innerText = 'Light Mode';
-        }
-
-        themeToggleBtn.addEventListener('click', () => {
-            document.body.classList.toggle('dark-mode');
-            if (document.body.classList.contains('dark-mode')) {
-                localStorage.setItem('theme', 'dark');
-                themeIcon.className = 'fa-solid fa-sun';
-                themeText.innerText = 'Light Mode';
-            } else {
-                localStorage.setItem('theme', 'light');
-                themeIcon.className = 'fa-solid fa-moon';
-                themeText.innerText = 'Dark Mode';
-            }
-        });
 
         function getYouTubeId(url) {
             const regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=)([^#\&\?]*).*/;
@@ -151,28 +115,39 @@
                         }
                     }
 
-                    // "यो पनि पढ्नुहोस" (नयाँ समाचार सधैँ माथि आउने रिभर्स अर्डर)
+                    // सुझाव खण्ड (सधैँ नयाँ माथि आउने रिभर्स लुप)
                     let suggestionsHtml = '';
                     let count = 0;
                     for (let i = rows.length - 1; i >= 1; i--) {
                         if (i === newsId) continue;
                         const row = rows[i];
                         if (row && row[1] && row[1].trim()) {
-                            suggestionsHtml += `<a href="news-detail.html?id=${i}" class="suggested-item"><i class="fa-solid fa-chevron-right" style="font-size:0.8rem; color:#ffd700;"></i> ${row[1].trim()}</a>`;
+                            suggestionsHtml += `<a href="news-detail.html?id=${i}" class="suggested-item"><i class="fa-solid fa-chevron-right" style="font-size:0.7rem; color:#b8860b;"></i> ${row[1].trim()}</a>`;
                             count++;
-                            if (count >= 4) break;
+                            if (count >= 4) break; 
                         }
                     }
 
+                    // पूरा ढाँचा इन्जेक्सन (अटोमेटिक फलो बक्स सहित)
                     container.innerHTML = `
                         <span class="news-date"><i class="fa-regular fa-clock"></i> ${date}</span>
                         <h1>${title}</h1>
                         ${mediaHtml}
                         <div class="news-content">${desc}</div>
                         
+                        <div class="follow-notice-box">
+                            <p>सूचना, मनोरञ्जन र डिजिटल सेवाका लागि ROCK C Media Solution लाई Follow गर्न नभुल्नुहोस्।</p>
+                            <ul class="follow-links">
+                                <li><i class="fab fa-facebook"></i> Facebook: <a href="https://facebook.com/Rockcmedia" target="_blank">facebook.com/Rockcmedia</a></li>
+                                <li><i class="fab fa-whatsapp"></i> WhatsApp: <a href="https://wa.me/9779811661522" target="_blank">+9779811661522</a></li>
+                                <li><i class="fas fa-envelope"></i> Email: <a href="mailto:rockcmediasolution@gmail.com">rockcmediasolution@gmail.com</a></li>
+                                <li><i class="fab fa-youtube"></i> YouTube: <a href="https://youtube.com/@Rock-CMediaSolution" target="_blank">youtube.com/@Rock-CMediaSolution</a></li>
+                            </ul>
+                        </div>
+
                         <section class="suggestions-section">
                             <h3>यो पनि पढ्नुहोस</h3>
-                            ${suggestionsHtml || '<p style="color:#666;">अन्य समाचार उपलब्ध छैन।</p>'}
+                            ${suggestionsHtml || '<p style="color:#7f8c8d;">अन्य समाचार उपलब्ध छैन।</p>'}
                         </section>
                     `;
                 },
