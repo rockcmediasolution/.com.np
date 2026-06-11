@@ -1,194 +1,707 @@
-*{
-margin:0;
-padding:0;
-box-sizing:border-box;
-font-family:'Poppins',sans-serif;
-}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ROCK-C Media Solution</title>
 
-body{
-background:#080808;
-color:white;
-line-height:1.7;
-}
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
-.container{
-width:90%;
-max-width:1200px;
-margin:auto;
-}
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', Arial, sans-serif;
+        }
 
-header{
-background:#000;
-border-bottom:2px solid #d4a45a;
-position:sticky;
-top:0;
-z-index:1000;
-}
+        body {
+            background: #0b0b0b;
+            color: #f1f1f1;
+            line-height: 1.6;
+            scroll-behavior: smooth;
+        }
 
-.nav{
-display:flex;
-justify-content:space-between;
-align-items:center;
-padding:15px 0;
-}
+        header {
+            background: rgba(0, 0, 0, 0.9);
+            padding: 15px;
+            text-align: center;
+            border-bottom: 2px solid #ffd700;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            backdrop-filter: blur(10px);
+        }
 
-.logo img{
-height:70px;
-}
+        .logo {
+            max-width: 180px;
+            width: 100%;
+            height: auto;
+        }
 
-nav a{
-color:white;
-text-decoration:none;
-margin-left:20px;
-font-weight:500;
-}
+        .hero {
+            padding: 120px 20px;
+            text-align: center;
+            background: linear-gradient(rgba(11, 11, 11, 0.85), rgba(11, 11, 11, 0.85)), url('V%201.1%20FINAL%20BANNER%2015%20AUG%202026.png');
+            background-size: cover;
+            background-position: center;
+            border-bottom: 1px solid #222;
+        }
 
-nav a:hover{
-color:#d4a45a;
-}
+        .hero h1 {
+            font-size: 3.5rem;
+            color: #ffd700;
+            font-weight: 700;
+            text-shadow: 0px 4px 10px rgba(255, 215, 0, 0.3);
+            line-height: 1.2;
+        }
 
-.hero{
-height:90vh;
-display:flex;
-align-items:center;
-justify-content:center;
-text-align:center;
-background:
-linear-gradient(rgba(0,0,0,.7),rgba(0,0,0,.7)),
-url('https://images.unsplash.com/photo-1492691527719-9d1e07e534b4?auto=format&fit=crop&w=1600&q=80');
-background-size:cover;
-background-position:center;
-}
+        .hero p {
+            margin-top: 15px;
+            font-size: 1.3rem;
+            color: #ccc;
+            letter-spacing: 1px;
+        }
 
-.hero h1{
-font-size:4rem;
-color:#d4a45a;
-}
+        .cta-btn {
+            display: inline-block;
+            margin-top: 25px;
+            padding: 12px 30px;
+            background: #ffd700;
+            color: #000;
+            text-decoration: none;
+            font-weight: bold;
+            border-radius: 25px;
+            transition: 0.3s ease;
+        }
 
-.hero p{
-font-size:1.2rem;
-margin-top:15px;
-}
+        .cta-btn:hover {
+            background: #fff;
+            transform: scale(1.05);
+        }
 
-.buttons{
-margin-top:30px;
-}
+        .section {
+            padding: 80px 20px;
+            max-width: 1200px;
+            margin: auto;
+        }
 
-.btn,
-.btn-outline{
-padding:12px 25px;
-text-decoration:none;
-margin:10px;
-border-radius:5px;
-font-weight:600;
-}
+        .section h2 {
+            text-align: center;
+            margin-bottom: 40px;
+            color: #ffd700;
+            font-size: 2.2rem;
+            position: relative;
+        }
 
-.btn{
-background:#d4a45a;
-color:black;
-}
+        .section h2::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 3px;
+            background: #ffd700;
+            margin: 10px auto 0;
+            border-radius: 2px;
+        }
 
-.btn-outline{
-border:2px solid #d4a45a;
-color:#d4a45a;
-}
+        .about-text {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto;
+            font-size: 1.1rem;
+            color: #ddd;
+        }
 
-.section{
-padding:80px 0;
-}
+        .cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+        }
 
-.section h2{
-text-align:center;
-margin-bottom:40px;
-color:#d4a45a;
-}
+        .card {
+            background: #141414;
+            padding: 30px 20px;
+            border-radius: 12px;
+            border: 1px solid #252525;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
 
-.dark{
-background:#111;
-}
+        .card i {
+            font-size: 2.5rem;
+            color: #ffd700;
+            margin-bottom: 15px;
+        }
 
-.grid{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-gap:25px;
-}
+        .card h3 {
+            margin-bottom: 10px;
+            font-size: 1.4rem;
+            color: #fff;
+        }
 
-.card{
-background:#1a1a1a;
-padding:25px;
-border-radius:10px;
-border:1px solid #333;
-transition:.3s;
-}
+        .card:hover {
+            border-color: #ffd700;
+            transform: translateY(-5px);
+        }
 
-.card:hover{
-transform:translateY(-8px);
-border-color:#d4a45a;
-}
+        .card.expandable {
+            cursor: pointer;
+        }
+        .card.expandable .click-hint {
+            font-size: 0.8rem;
+            color: #666;
+            margin-top: 5px;
+            transition: 0.3s;
+        }
+        .card.expandable:hover .click-hint {
+            color: #ffd700;
+        }
+        .card-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out;
+            text-align: left;
+            margin-top: 0;
+        }
+        .card.active .card-content {
+            margin-top: 20px;
+            border-top: 1px dashed #ffd700;
+            padding-top: 15px;
+        }
+        .card-content ul {
+            list-style: none;
+            padding-left: 5px;
+        }
+        .card-content li {
+            font-size: 0.95rem;
+            margin-bottom: 8px;
+            color: #ccc;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .card-content li i {
+            font-size: 0.9rem;
+            color: #ffd700;
+            margin-bottom: 0;
+        }
 
-footer{
-text-align:center;
-padding:25px;
-background:#000;
-border-top:2px solid #d4a45a;
-}
+        /* न्यूज र फेसबुक मिडिया लेआउट (दुई खण्ड) */
+        .news-grid {
+            display: grid;
+            grid-template-columns: 1.6fr 1fr;
+            gap: 30px;
+            align-items: start;
+        }
 
-.whatsapp{
-position:fixed;
-right:20px;
-bottom:20px;
-background:#25D366;
-color:white;
-padding:14px 18px;
-border-radius:50px;
-text-decoration:none;
-font-weight:bold;
-}
+        /* डाइनामिक न्यूज पोर्टल डिजाइन */
+        .news-portal {
+            background: #141414;
+            padding: 20px;
+            border-radius: 12px;
+            border: 1px solid #252525;
+        }
 
-@media(max-width:768px){
+        .news-item {
+            background: #0b0b0b;
+            border: 1px solid #222;
+            margin-bottom: 15px;
+            border-radius: 8px;
+            overflow: hidden;
+            transition: 0.3s;
+        }
 
-.hero h1{
-font-size:2.5rem;
-}
+        .news-item:hover {
+            border-color: #ffd700;
+        }
 
-nav{
-display:none;
-}
+        .news-header {
+            padding: 15px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 15px;
+        }
 
-.logo img{
-height:55px;
-}
+        .news-title-block h4 {
+            font-size: 1.1rem;
+            color: #fff;
+            font-weight: 600;
+            line-height: 1.4;
+        }
 
-}
-.portfolio-grid{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
-gap:25px;
-margin-top:30px;
-}
+        .news-date {
+            font-size: 0.75rem;
+            color: #ffd700;
+            display: inline-block;
+            margin-top: 4px;
+        }
 
-.portfolio-item{
-background:#1a1a1a;
-border-radius:12px;
-overflow:hidden;
-border:1px solid #333;
-transition:0.3s;
-}
+        .news-icon {
+            color: #ffd700;
+            transition: transform 0.3s;
+            font-size: 1.1rem;
+        }
 
-.portfolio-item:hover{
-transform:translateY(-8px);
-border-color:gold;
-}
+        .news-item.active .news-icon {
+            transform: rotate(180deg);
+        }
 
-.portfolio-item img{
-width:100%;
-height:320px;
-object-fit:cover;
-display:block;
-}
+        .news-body {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out;
+            background: #111;
+        }
 
-.portfolio-item p{
-padding:15px;
-text-align:center;
-font-weight:bold;
-}
+        .news-body-content {
+            padding: 20px;
+            border-top: 1px solid #222;
+            color: #ddd;
+            font-size: 1rem;
+            line-height: 1.7;
+        }
+
+        /* रेस्पोन्सिभ भिडियो बक्स */
+        .video-container {
+            position: relative;
+            padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
+            padding-top: 25px;
+            height: 0;
+            margin-top: 15px;
+            border-radius: 8px;
+            overflow: hidden;
+            border: 1px solid #ffd700;
+        }
+
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        .slider-wrapper {
+            position: relative;
+            max-width: 900px;
+            margin: 0 auto;
+            overflow: hidden;
+            border-radius: 15px;
+            border: 2px solid #ffd700;
+            background: #141414;
+            box-shadow: 0 10px 30px rgba(255, 215, 0, 0.05);
+        }
+
+        .portfolio-slider {
+            display: flex;
+            transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+        }
+
+        .portfolio-slide {
+            min-width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: #000;
+        }
+
+        .portfolio-slide img {
+            width: 100%;
+            height: 500px;
+            object-fit: contain;
+            display: block;
+        }
+
+        .fb-container {
+            display: flex;
+            justify-content: center;
+            background: #141414;
+            padding: 15px;
+            border-radius: 12px;
+            border: 1px solid #252525;
+            overflow: hidden;
+            width: 100%;
+        }
+
+        .contact-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 20px;
+        }
+
+        .contact-box {
+            background: #141414;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            border: 1px solid #252525;
+            word-wrap: break-word;
+        }
+
+        .contact-box i {
+            font-size: 2rem;
+            color: #ffd700;
+            margin-bottom: 10px;
+        }
+
+        .contact-box p { color: #fff; }
+        .contact-box a { color: #fff; text-decoration: none; }
+        .contact-box a:hover { color: #ffd700; }
+
+        footer {
+            background: #000;
+            text-align: center;
+            padding: 25px;
+            border-top: 2px solid #ffd700;
+            margin-top: 60px;
+            color: #888;
+        }
+
+        .whatsapp-float {
+            position: fixed;
+            bottom: 25px;
+            right: 25px;
+            background: #25D366;
+            color: white;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            text-align: center;
+            font-size: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            z-index: 100;
+            box-shadow: 0px 4px 10px rgba(0,0,0,0.3);
+        }
+
+        .loading-text {
+            text-align: center;
+            color: #aaa;
+            padding: 50px;
+            width: 100%;
+        }
+
+        @media (max-width: 992px) {
+            .news-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            header { padding: 10px; }
+            .logo { max-width: 140px; }
+            .section { padding: 45px 15px; }
+            .section h2 { font-size: 1.8rem; margin-bottom: 25px; }
+            .hero { padding: 70px 15px; }
+            .hero h1 { font-size: 2.2rem; }
+            .hero p { font-size: 1rem; }
+            .about-text { font-size: 1rem; text-align: justify; }
+            .portfolio-slide img { height: 320px; }
+            .cards { grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 15px; }
+            .card { padding: 20px 15px; }
+            .whatsapp-float { width: 50px; height: 50px; font-size: 24px; bottom: 20px; right: 20px; }
+        }
+
+        @media (max-width: 480px) {
+            .hero h1 { font-size: 1.8rem; }
+            .portfolio-slide img { height: 240px; }
+            .fb-container { padding: 5px; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <img src="ROCK C MEDIA SOLUTION NEW LOGO.png" alt="ROCK-C Media Solution" class="logo">
+    </header>
+
+    <section class="hero">
+        <h1>ROCK-C Media Solution</h1>
+        <p>Information • Entertainment • Digital Services</p>
+        <a href="#contact" class="cta-btn">Contact Us</a>
+    </section>
+
+    <section class="section">
+        <h2>About Us</h2>
+        <p class="about-text">
+            ROCK-C Media Solution is a professional media and digital agency
+            providing graphic design, video editing, digital marketing,
+            news content creation, website development and social media services.
+        </p>
+    </section>
+
+    <section class="section">
+        <h2>Our Services</h2>
+        <div class="cards">
+            
+            <div class="card expandable">
+                <i class="fa-solid fa-palette"></i>
+                <h3>Graphic Design</h3>
+                <p class="click-hint">Click to see details <i class="fa-solid fa-chevron-down" style="font-size:0.8rem;"></i></p>
+                <div class="card-content">
+                    <ul>
+                        <li><i class="fa-solid fa-square-check"></i> Logo Design & Branding</li>
+                        <li><i class="fa-solid fa-square-check"></i> Social Media Banner & Poster</li>
+                        <li><i class="fa-solid fa-square-check"></i> Business Cards & Flyer Design</li>
+                        <li><i class="fa-solid fa-square-check"></i> Brochure & Book Cover Design</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="card expandable">
+                <i class="fa-solid fa-video"></i>
+                <h3>Video Editing</h3>
+                <p class="click-hint">Click to see details <i class="fa-solid fa-chevron-down" style="font-size:0.8rem;"></i></p>
+                <div class="card-content">
+                    <ul>
+                        <li><i class="fa-solid fa-square-check"></i> Event Video Editing</li>
+                        <li><i class="fa-solid fa-square-check"></i> TikTok & Reels Editing</li>
+                        <li><i class="fa-solid fa-square-check"></i> Music Video Production</li>
+                        <li><i class="fa-solid fa-square-check"></i> YouTube Video Editing</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="card" onclick="window.location.href='#news'" style="cursor: pointer;">
+                <i class="fa-solid fa-newspaper"></i>
+                <h3>News & Media</h3>
+                <p class="click-hint" style="color: #ffd700;">Click to view Live Updates</p>
+            </div>
+
+            <div class="card">
+                <i class="fa-solid fa-code"></i>
+                <h3>Website Development</h3>
+            </div>
+
+            <div class="card expandable">
+                <i class="fa-solid fa-bullhorn"></i>
+                <h3>Digital Marketing</h3>
+                <p class="click-hint">Click to see details <i class="fa-solid fa-chevron-down" style="font-size:0.8rem;"></i></p>
+                <div class="card-content">
+                    <ul>
+                        <li><i class="fa-solid fa-square-check"></i> गीत दर्ता तथा लाइसेन्स (Song Licensing)</li>
+                        <li><i class="fa-solid fa-square-check"></i> Song Distribution (Audio Platforms)</li>
+                        <li><i class="fa-solid fa-square-check"></i> YouTube Artist (OAC) Verification</li>
+                        <li><i class="fa-solid fa-square-check"></i> Facebook Monetization Guide</li>
+                        <li><i class="fa-solid fa-square-check"></i> YouTube Monetization Guide</li>
+                        <li><i class="fa-solid fa-square-check"></i> Payment Account Setup (Payoneer)</li>
+                        <li><i class="fa-solid fa-square-check"></i> AI Song / Cover Song Creation</li>
+                        <li><i class="fa-solid fa-square-check"></i> AI Music Arrange</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="card">
+                <i class="fa-brands fa-youtube"></i>
+                <h3>YouTube Branding</h3>
+            </div>
+
+        </div>
+    </section>
+
+    <section class="section">
+        <h2>Our Work Portfolio</h2>
+        <div class="slider-wrapper">
+            <div class="portfolio-slider" id="auto-gallery">
+                <p class="loading-text"><i class="fas fa-spinner fa-spin"></i> Shuffling and loading projects...</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="section" id="news">
+        <h2>Latest News & Facebook Updates</h2>
+        <div class="news-grid">
+            
+            <div class="news-portal" id="dynamic-news">
+                <p class="loading-text"><i class="fas fa-spinner fa-spin"></i> Loading News Headlines...</p>
+            </div>
+
+            <div class="fb-container">
+                <div class="fb-page" 
+                     data-href="https://www.facebook.com/Rockcmedia" 
+                     data-tabs="timeline" 
+                     data-width="500" 
+                     data-height="600" 
+                     data-small-header="false" 
+                     data-adapt-container-width="true" 
+                     data-hide-cover="false" 
+                     data-show-facepile="false">
+                    <blockquote lang="en" class="fb-xfbml-parse-ignore">
+                        <a href="https://www.facebook.com/Rockcmedia">Loading Facebook Feed...</a>
+                    </blockquote>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <section class="section" id="contact">
+        <h2>Contact Us</h2>
+        <div class="contact-container">
+            <div class="contact-box"><i class="fa-solid fa-phone"></i><p>+977 9811661522</p></div>
+            <div class="contact-box"><i class="fa-solid fa-envelope"></i><p>rockcmediasolution<wbr>@gmail.com</p></div>
+            <div class="contact-box"><i class="fa-brands fa-facebook"></i><br><a href="https://www.facebook.com/Rockcmedia/photos_albums" target="_blank">Visit Facebook</a></div>
+            <div class="contact-box"><i class="fa-brands fa-youtube"></i><br><a href="https://www.youtube.com/@Rock-CMediaSolution" target="_blank">Visit YouTube</a></div>
+        </div>
+    </section>
+
+    <footer>
+        <p>© 2026 ROCK-C Media Solution. All Rights Reserved.</p>
+    </footer>
+
+    <a href="https://wa.me/9779811661522" class="whatsapp-float" target="_blank">
+        <i class="fa-brands fa-whatsapp"></i>
+    </a>
+
+    <div id="fb-root"></div>
+    <script async defer crossorigin="anonymous" src="https://connect.facebook.net/ne_NP/sdk.js#xfbml=1&version=v17.0"></script>
+
+    <script>
+        const repoOwner = 'rockcmediasolution'; 
+        const repoName = 'rock-cmediasolution'; 
+        const folderName = 'our-work-portfolio/our-work-portfolio'; 
+        const apiUrl = `https://api.github.com/repos/${repoOwner}/${repoName}/contents/${folderName}`;
+
+        async function fetchGallery() {
+            const galleryDiv = document.getElementById('auto-gallery');
+            try {
+                const response = await fetch(apiUrl);
+                if (!response.ok) throw new Error("Folder not found");
+                const files = await response.json();
+                
+                const imageExtensions = ['.png', '.jpg', '.jpeg', '.webp', '.gif'];
+                let imageFiles = files.filter(file => imageExtensions.some(ext => file.name.toLowerCase().endsWith(ext)));
+
+                for (let i = imageFiles.length - 1; i > 0; i--) {
+                    const j = Math.floor(Math.random() * (i + 1));
+                    [imageFiles[i], imageFiles[j]] = [imageFiles[j], imageFiles[i]];
+                }
+                
+                let html = '';
+                imageFiles.forEach(file => {
+                    html += `
+                        <div class="portfolio-slide">
+                            <img src="${file.path}" alt="Portfolio Project">
+                        </div>
+                    `;
+                });
+
+                if(html === '') {
+                    galleryDiv.innerHTML = '<p class="loading-text">No images found in the folder yet!</p>';
+                } else {
+                    galleryDiv.innerHTML = html;
+                    startAutoSlider(); 
+                }
+            } catch (error) {
+                console.error(error);
+                galleryDiv.innerHTML = '<p class="loading-text" style="color:red;">Error loading portfolio slider.</p>';
+            }
+        }
+
+        function startAutoSlider() {
+            const slider = document.getElementById('auto-gallery');
+            const slides = document.querySelectorAll('.portfolio-slide');
+            if (slides.length <= 1) return; 
+
+            let currentIndex = 0;
+            setInterval(() => {
+                currentIndex = (currentIndex + 1) % slides.length;
+                slider.style.transform = `translateX(-${currentIndex * 100}%)`;
+            }, 3000); 
+        }
+
+        // युट्युब लिङ्कलाई प्लेयरमा बदल्ने फङ्सन
+        function getYoutubeEmbed(url) {
+            if (!url) return '';
+            const regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=)([^#\&\?]*).*/;
+            const match = url.match(regExp);
+            if (match && match[2].length === 11) {
+                return `<div class="video-container"><iframe src="https://www.youtube.com/embed/${match[2]}" frameborder="0" allowfullscreen></iframe></div>`;
+            }
+            return '';
+        }
+
+        // news.json बाट डेटा तानेर हेडलाइन पोर्टल बनाउने फङ्सन
+        async function fetchNewsPortal() {
+            const newsDiv = document.getElementById('dynamic-news');
+            try {
+                // क्यास बस्टिङको लागि टाइमस्ट्याम्प थपिएको (ताजा न्यूज तुरुन्त देखिनलाई)
+                const response = await fetch('./news.json?t=' + new Date().getTime());
+                if (!response.ok) throw new Error("News file not found");
+                const newsItems = await response.json();
+
+                if (newsItems.length === 0) {
+                    newsDiv.innerHTML = '<p class="loading-text">No news published yet!</p>';
+                    return;
+                }
+
+                let newsHtml = '';
+                newsItems.forEach(item => {
+                    const videoEmbed = getYoutubeEmbed(item.videoUrl);
+                    newsHtml += `
+                        <div class="news-item">
+                            <div class="news-header">
+                                <div class="news-title-block">
+                                    <h4>${item.title}</h4>
+                                    <span class="news-date"><i class="fa-regular fa-calendar-days"></i> ${item.date}</span>
+                                </div>
+                                <i class="fa-solid fa-chevron-down news-icon"></i>
+                            </div>
+                            <div class="news-body">
+                                <div class="news-body-content">
+                                    <p>${item.content}</p>
+                                    ${videoEmbed}
+                                </div>
+                            </div>
+                        </div>
+                    `;
+                });
+
+                newsDiv.innerHTML = newsHtml;
+
+                // न्यूज हेडलाइन क्लिक गर्दा खुल्ने/बन्द हुने लोजिक
+                const items = document.querySelectorAll('.news-item');
+                items.forEach(item => {
+                    const header = item.querySelector('.news-header');
+                    header.addEventListener('click', () => {
+                        item.classList.toggle('active');
+                        const body = item.querySelector('.news-body');
+                        if (item.classList.contains('active')) {
+                            body.style.maxHeight = body.scrollHeight + "px";
+                        } else {
+                            body.style.maxHeight = "0px";
+                        }
+                    });
+                });
+
+            } catch (error) {
+                console.error(error);
+                newsDiv.innerHTML = '<p class="loading-text" style="color:#ffd700;">आधिकारिक समाचारहरू गिटीहबको news.json मा राखेपछि यहाँ देखा पर्नेछन्।</p>';
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            fetchGallery();
+            fetchNewsPortal();
+
+            const expandableCards = document.querySelectorAll('.card.expandable');
+            expandableCards.forEach(card => {
+                card.addEventListener('click', function() {
+                    this.classList.toggle('active');
+                    const content = this.querySelector('.card-content');
+                    if (this.classList.contains('active')) {
+                        content.style.maxHeight = content.scrollHeight + "px";
+                    } else {
+                        content.style.maxHeight = "0px";
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
